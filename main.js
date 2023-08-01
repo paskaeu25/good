@@ -9,10 +9,18 @@ todoForm.addEventListener("submit", (e) => {
 
 function addTask() {
   const taskText = taskInput.value.trim();
-  if (taskText === "") alert("Please enter a task!");
+  if (taskText === "") {
+    alert("Please enter a task!");
+    return;
+  }
 
   const li = document.createElement("li");
-  li.innerHTML = taskText;
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+
+  li.appendChild(checkbox);
+  li.innerHTML += ` ${taskText}`;
+
   taskList.appendChild(li);
 
   taskInput.value = "";
