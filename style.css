@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
 
+/* Reset default checkbox styles  */
+.checkbox {
+  margin: 0;
+  vertical-align: middle;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -68,12 +74,36 @@ ul {
   background-color: transparent;
   border: none;
   height: 100%;
-  font-weight: 900;
-  cursor: pointer;
+  font-weight: 700;
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.delete:hover {
+  background-color: #eeeded;
 }
 
 .li-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  padding: 5px 0;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.delete,
+.checkbox,
+.task-box,
+span {
+  cursor: pointer;
 }
