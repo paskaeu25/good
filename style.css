@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
 
-/* Reset default checkbox styles  */
-.checkbox {
-  margin: 0;
-  vertical-align: middle;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,11 +11,11 @@ ul {
   list-style: none;
 }
 
-ul li {
+li {
   position: relative;
 }
 
-ul li::before {
+li::before {
   content: "";
   background-image: url(./assets/icons/unchecked.png);
   background-position: center;
@@ -37,7 +31,7 @@ li.checked {
   color: #ccc;
 }
 
-ul li.checked::before {
+li.checked::before {
   background-image: url(./assets/icons/checked.png);
 }
 
@@ -100,7 +94,7 @@ ul li.checked::before {
   height: 100%;
   font-weight: 700;
   position: absolute;
-  right: 0;
+  right: 10px;
   padding: 10px;
   border-radius: 50%;
 }
@@ -109,7 +103,7 @@ ul li.checked::before {
   background-color: #eeeded;
 }
 
-.li-container {
+.todo-item {
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -26,7 +26,7 @@ function displayErrorMessage(message) {
 
 function addTaskToList(taskText) {
   const listItem = document.createElement("li");
-  listItem.classList.add("li-container");
+  listItem.classList.add("todo-item");
 
   const taskBox = document.createElement("div");
   taskBox.classList.add("task-box");
@@ -64,7 +64,7 @@ function deleteTask(taskItem) {
 }
 
 function toggleTaskComplete(element) {
-  const listItem = element.closest(".li-container");
+  const listItem = element.closest(".todo-item");
   listItem.classList.toggle("checked");
 }
 
