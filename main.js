@@ -61,8 +61,7 @@ function completeTask(e) {
     targetClass.contains("task-box") ||
     targetClass.contains("todo-text")
   ) {
-    const span = listItem.querySelector(".todo-text");
-    span.classList.toggle("checked");
+    listItem.classList.toggle("checked");
   }
   saveData();
 }

@@ -17,6 +17,30 @@ ul {
   list-style: none;
 }
 
+ul li {
+  position: relative;
+}
+
+ul li::before {
+  content: "";
+  background-image: url(./assets/icons/unchecked.png);
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+}
+
+li.checked {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+ul li.checked::before {
+  background-image: url(./assets/icons/checked.png);
+}
+
 .container {
   background-image: linear-gradient(
     to right top,
@@ -93,12 +117,12 @@ ul {
   padding: 5px 0;
 }
 
-.checked {
-  text-decoration: line-through;
-}
-
 .delete,
 .task-box,
 span {
   cursor: pointer;
+}
+
+.task-box {
+  margin-left: 40px;
 }
