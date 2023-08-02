@@ -97,12 +97,7 @@ ul {
   text-decoration: line-through;
 }
 
-.checkbox {
-  margin-right: 10px;
-}
-
 .delete,
-.checkbox,
 .task-box,
 span {
   cursor: pointer;

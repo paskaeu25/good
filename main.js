@@ -11,31 +11,6 @@ todoForm.addEventListener("submit", (e) => {
 taskList.addEventListener("click", deleteTask);
 taskList.addEventListener("click", completeTask);
 
-function deleteTask(e) {
-  if (e.target.classList.contains("delete")) {
-    e.target.parentElement.remove();
-  }
-}
-
-function completeTask(e) {
-  const listItem = e.target.closest(".li-container");
-  if (
-    e.target.classList.contains("checkbox") ||
-    e.target.classList.contains("todo-text") ||
-    e.target.classList.contains("task-box")
-  ) {
-    const span = listItem.querySelector(".todo-text");
-    const checkbox = listItem.querySelector(".checkbox");
-    span.classList.toggle("checked");
-
-    if (span.classList.contains("checked")) {
-      checkbox.checked = true;
-    } else {
-      checkbox.checked = false;
-    }
-  }
-}
-
 // Functions
 function addTask() {
   const taskText = taskInput.value.trim();
@@ -50,15 +25,10 @@ function addTask() {
   const taskBox = document.createElement("div");
   taskBox.classList.add("task-box");
 
-  const taskCheck = document.createElement("input");
-  taskCheck.type = "checkbox";
-  taskCheck.classList.add("checkbox");
-
   const taskTextInList = document.createElement("span");
   taskTextInList.classList.add("todo-text");
   taskTextInList.innerHTML = taskText;
 
-  taskBox.appendChild(taskCheck);
   taskBox.appendChild(taskTextInList);
 
   listItem.appendChild(taskBox);
@@ -72,4 +42,37 @@ function addTask() {
   taskList.appendChild(listItem);
 
   taskInput.value = "";
+  saveData();
 }
+
+function deleteTask(e) {
+  if (e.target.classList.contains("delete")) {
+    e.target.parentElement.remove();
+    saveData();
+  }
+}
+
+function completeTask(e) {
+  const listItem = e.target.closest(".li-container");
+  const targetClass = e.target.classList;
+
+  if (
+    targetClass.contains("li-container") ||
+    targetClass.contains("task-box") ||
+    targetClass.contains("todo-text")
+  ) {
+    const span = listItem.querySelector(".todo-text");
+    span.classList.toggle("checked");
+  }
+  saveData();
+}
+
+function saveData() {
+  localStorage.setItem("data", taskList.innerHTML);
+}
+
+function getData() {
+  taskList.innerHTML = localStorage.getItem("data");
+}
+
+getData();
