@@ -2,26 +2,29 @@
 const todoForm = document.querySelector("#todoForm");
 const taskInput = document.querySelector("#taskInput");
 const taskList = document.querySelector("#taskList");
+const errorMsg = document.querySelector(".error-message");
 
 // Event Listeners
-todoForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  addTask();
-});
-taskList.addEventListener("click", deleteTask);
-taskList.addEventListener("click", completeTask);
+todoForm.addEventListener("submit", handleFormSubmit);
+taskList.addEventListener("click", handleTaskClick);
 
 // Functions
-function addTask() {
+function handleFormSubmit(e) {
+  e.preventDefault();
   const taskText = taskInput.value.trim();
-  const errorMsg = document.querySelector(".error-message");
   if (taskText === "") {
-    errorMsg.innerHTML = "Oops, you forgot to enter the task 😆";
-    errorMsg.classList;
-    return;
+    displayErrorMessage("Oops, you forgot to enter the task 😆");
+  } else {
+    addTaskToList(taskText);
+    saveData();
   }
+}
 
-  errorMsg.innerHTML = "";
+function displayErrorMessage(message) {
+  errorMsg.textContent = message;
+}
+
+function addTaskToList(taskText) {
   const listItem = document.createElement("li");
   listItem.classList.add("li-container");
 
@@ -33,7 +36,6 @@ function addTask() {
   taskTextInList.innerHTML = taskText;
 
   taskBox.appendChild(taskTextInList);
-
   listItem.appendChild(taskBox);
 
   const deleteBtn = document.createElement("button");
@@ -41,32 +43,29 @@ function addTask() {
   deleteBtn.classList.add("delete");
 
   listItem.appendChild(deleteBtn);
-
   taskList.appendChild(listItem);
 
   taskInput.value = "";
-  saveData();
+  displayErrorMessage("");
 }
 
-function deleteTask(e) {
+function handleTaskClick(e) {
   if (e.target.classList.contains("delete")) {
-    e.target.parentElement.remove();
+    deleteTask(e.target.parentElement);
+    saveData();
+  } else {
+    toggleTaskComplete(e.target);
     saveData();
   }
 }
 
-function completeTask(e) {
-  const listItem = e.target.closest(".li-container");
-  const targetClass = e.target.classList;
+function deleteTask(taskItem) {
+  taskItem.remove();
+}
 
-  if (
-    targetClass.contains("li-container") ||
-    targetClass.contains("task-box") ||
-    targetClass.contains("todo-text")
-  ) {
-    listItem.classList.toggle("checked");
-  }
-  saveData();
+function toggleTaskComplete(element) {
+  const listItem = element.closest(".li-container");
+  listItem.classList.toggle("checked");
 }
 
 function saveData() {
