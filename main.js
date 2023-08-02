@@ -14,11 +14,14 @@ taskList.addEventListener("click", completeTask);
 // Functions
 function addTask() {
   const taskText = taskInput.value.trim();
+  const errorMsg = document.querySelector(".error-message");
   if (taskText === "") {
-    alert("Please enter a task!");
+    errorMsg.innerHTML = "Oops, you forgot to enter the task 😆";
+    errorMsg.classList;
     return;
   }
 
+  errorMsg.innerHTML = "";
   const listItem = document.createElement("li");
   listItem.classList.add("li-container");
 

@@ -72,7 +72,7 @@ ul li.checked::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
+  margin: 10px 0;
   background-color: #eeeded;
   border-radius: 30px;
 }
@@ -125,4 +125,9 @@ span {
 
 .task-box {
   margin-left: 40px;
+}
+
+.error-message {
+  color: red;
+  margin: 5px 0;
 }
