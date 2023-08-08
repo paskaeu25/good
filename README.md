@@ -5,6 +5,7 @@
 
 
 The Good Enough Todo App is a simple and lightweight to-do list application built with HTML, CSS, and JavaScript. It allows you to manage your tasks efficiently and keep track of your daily activities.
+
 Project link: https://paskaeu25.github.io/good-enough-todo/
 
 ## Features
